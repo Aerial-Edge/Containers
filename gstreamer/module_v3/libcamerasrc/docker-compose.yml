@@ -1,0 +1,21 @@
+version: "3.8"
+
+services:
+  gstreamer:
+    build: .
+    volumes:
+      - ./entrypoint.sh:/home/root/entrypoint.sh:ro
+    devices:
+      - "/dev/vchiq:/dev/vchiq"
+      - "/dev/vcio:/dev/vcio"
+      - "/dev/vcsm-cma:/dev/vcsm-cma"
+      - "/dev/video0:/dev/video0"
+      - "/dev/video0:/dev/video1"
+      - "/dev/video13:/dev/video13"
+      - "/dev/video13:/dev/video14"
+      - "/dev/video13:/dev/video15"
+      - "/dev/video13:/dev/video16"
+      - "/dev/media3:/dev/media0"
+      - "/dev/media3:/dev/media1"
+      - "/dev/media3:/dev/media2"
+      - "/dev/media3:/dev/media3"

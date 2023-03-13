@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  mavproxy:
+    build: .
+    volumes:
+      - ./data:/root/.mavproxy
+    devices:
+      - "/dev/ttyACM0:/dev/ttyACM0"

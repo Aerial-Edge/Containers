@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  gstreamer:
+    build: .
+    volumes:
+      - ./entrypoint.sh:/home/root/entrypoint.sh:ro
+    devices:
+      - "/dev/video0:/dev/video0"

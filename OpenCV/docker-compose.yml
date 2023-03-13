@@ -1,0 +1,26 @@
+version: "3.8"
+
+services:
+  labelimage:
+    build: .
+    volumes:
+      - /usr/lib/arm-linux-gnueabihf:/usr/lib/arm-linux-gnueabihf:ro
+      - /usr/bin/libcamera-hello:/usr/bin/libcamera-hello:ro
+      - /usr/bin/libcamera-jpeg:/usr/bin/libcamera-jpeg:ro
+      - /usr/bin/libcamera-raw:/usr/bin/libcamera-raw:ro
+      - /usr/bin/libcamera-still:/usr/bin/libcamera-still:ro
+      - /usr/bin/libcamera-vid:/usr/bin/libcamera-vid:ro
+      - /usr/bin/raspivid:/usr/bin/raspivid:ro
+      - /usr/bin/raspividyuv:/usr/bin/raspividyuv:ro
+      - /usr/bin/raspistill:/usr/bin/raspistill:ro
+      - /usr/bin/raspi-config:/usr/bin/raspi-config:ro
+      - /usr/bin/raspi-gpio:/usr/bin/raspi-gpio:ro
+      - /usr/bin/raspinfo:/usr/bin/raspinfo:ro
+      - /usr/bin/raspiyuv:/usr/bin/raspiyuv:ro
+      - ./data:/TFLite/data
+    environment:
+      - LD_LIBRARY_PATH=/usr/bin
+    devices:
+      - "/dev/vchiq:/dev/vchiq"
+      - "/dev/vcio:/dev/vcio"
+      - "/dev/vcsm-cma:/dev/vcsm-cma"

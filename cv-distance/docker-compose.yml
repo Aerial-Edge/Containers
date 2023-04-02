@@ -1,0 +1,9 @@
+version: "3.8"
+
+services:
+  cv-distance:
+    build: .
+    volumes:
+      - ./app:/root/app
+    devices:
+      - "/dev/video0:/dev/video0"

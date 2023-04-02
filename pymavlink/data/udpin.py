@@ -2,7 +2,7 @@ import time
 import sys
 from pymavlink import mavutil
 
-the_connection = mavutil.mavlink_connection("udpin:192.168.86.44:14550")
+the_connection = mavutil.mavlink_connection("udpin:localhost:14550", baud=57600)
 the_connection.wait_heartbeat()
 print("HEARTBEAT_DONE")
 

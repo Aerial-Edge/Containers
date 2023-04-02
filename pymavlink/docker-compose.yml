@@ -6,6 +6,6 @@ services:
     volumes:
       - ./data:/root/pymavlink
       - ./vscode-server:/root/.vscode-server
-    devices:
-      - "/dev/ttyACM0:/dev/ttyACM0"
+#    devices:
+#      - "/dev/ttyACM0:/dev/ttyACM0"
     network_mode: "host"

@@ -8,8 +8,8 @@ ballRadius = 3.25   # cm
 kameraFOV = 62.2    # grader
 faktor = (frameWidth / 2) * (ballRadius / math.tan(math.radians(kameraFOV / 2)))    # Piksler fra senter til kant delt på minimum avstand fra linse
 
-def kalkulerDistanse (ballRadius_px):
-    return (int(faktor / radiusBall_px))   # Returnerer distanse fra linse til ballen
+def kalkulerDistanse (_ballRadius_px):
+    return (int(faktor / _ballRadius_px))   # Returnerer distanse fra linse til ballen
 
 # FARGEDETEKSJON:
 greenLower = (29, 86, 6)
@@ -32,11 +32,11 @@ while True:
 
     if len(cnts) > 0:
         c = max(cnts, key=cv.contourArea)
-        ((x, y), radiusBall_px) = cv.minEnclosingCircle(c)
+        ((x, y), ballRadius_px) = cv.minEnclosingCircle(c)
 
-        cv.circle(frame, (int(x), int(y)), int(radiusBall_px), (0, 255, 255), 2)
+        cv.circle(frame, (int(x), int(y)), int(ballRadius_px), (0, 255, 255), 2)
 
-        print(kalkulerDistanse(radiusBall_px))
+        print(kalkulerDistanse(ballRadius_px))
 
     # IMSHOW:
     # cv.imshow("Frame", frame)

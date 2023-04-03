@@ -9,7 +9,7 @@ kameraFOV = 62.2    # grader
 faktor = (frameWidth / 2) * (ballRadius / math.tan(math.radians(kameraFOV / 2)))    # Piksler fra senter til kant delt på minimum avstand fra linse
 
 def kalkulerDistanse (ballRadius_px):
-    return (int(faktor / radiusBall_px)))   # Printer distanse fra linse til ballen
+    return (int(faktor / radiusBall_px)))   # Returnerer distanse fra linse til ballen
 
 # FARGEDETEKSJON:
 greenLower = (29, 86, 6)

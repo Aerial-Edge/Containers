@@ -7,7 +7,9 @@ frameWidth = 600    # px
 ballRadius = 3.25   # cm
 kameraFOV = 62.2    # grader
 faktor = (frameWidth / 2) * (ballRadius / math.tan(math.radians(kameraFOV / 2)))    # Piksler fra senter til kant delt på minimum avstand fra linse
-# Distanse fra linse == faktor * (1 / radiusBall_px)
+
+def kalkulerDistanse (ballRadius_px):
+    return (int(faktor / radiusBall_px)))   # Printer distanse fra linse til ballen
 
 # FARGEDETEKSJON:
 greenLower = (29, 86, 6)
@@ -34,7 +36,7 @@ while True:
 
         cv.circle(frame, (int(x), int(y)), int(radiusBall_px), (0, 255, 255), 2)
 
-        print(int(faktor * (1 / radiusBall_px)))   # Printer distanse til ballen
+        print(kalkulerDistanse(radiusBall_px))
 
     # IMSHOW:
     # cv.imshow("Frame", frame)

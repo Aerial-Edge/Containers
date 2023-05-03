@@ -1,16 +1,16 @@
 FROM debian:bullseye
 
 # Setting up user for ros2
-RUN useradd -ms /bin/bash ros
-RUN usermod -aG sudo ros
-RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
+RUN useradd -ms /bin/bash ros && usermod -aG sudo ros && echo '%sudo ALL=ALL(ALL) NOPASSWD:ALL' >> /etc/sudoers
+#RUN usermod -aG sudo ros
+#RUN echo '%sudo ALL=(ALL) NOPASSWD:ALL' >> /etc/sudoers
 USER ros
 WORKDIR /home/ros
 
 # Upgrading packages in order to make sure that the ros2 build does not fail
-RUN sudo apt-get update && sudo apt-get -y upgrade
+#RUN sudo apt-get update && sudo apt-get -y upgrade
 
-RUN sudo apt-get update && sudo apt-get y install \
+RUN sudo apt-get update && sudo apt-get upgrade -y && sudo apt-get y install \
 	curl \
 	gnupg2 \
 	lsb-release \
@@ -44,11 +44,11 @@ RUN sudo python3 -m pip install -U \
 	pytest-rerunfailures \
 	setuptools
 
-RUN mkdir -p ~/ros2_ws/src
+RUN mkdir -p ~/ros2_ws/src && RUN wget https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos && vcs import src < ros2.repos && sudo rosdep init
 WORKDIR /home/ros2_ws
-RUN wget https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
-RUN vcs import src < ros2.repos
-RUN sudo rosdep init
+#RUN wget https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos
+#RUN vcs import src < ros2.repos
+#RUN sudo rosdep init
 
 # The follwing line instructs the build system which rosdistro to install and which dependencies to ignore
 # Because we are using the bundled DDS we do not need anything else. 

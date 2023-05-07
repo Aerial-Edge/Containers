@@ -14,7 +14,7 @@ RUN . /home/ros/ros2_ws/install/setup.sh && \
     colcon build --packages-select drone_pkg --symlink-install
 
 # Copying node script:
-COPY ./autopilot_node.py ./src/drone_pkg/drone_pkg/autopilot_node.py
+COPY ./drone_pkg/autopilot_node.py ./src/drone_pkg/drone_pkg/autopilot_node.py
 
 # Copying entrypoint:
 COPY ./entrypoint.sh ./

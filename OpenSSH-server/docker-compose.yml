@@ -3,5 +3,4 @@ version: "3.8"
 services:
   openssh-server:
     build: .
-    ports:
-      - "1996:22"
+    network_mode: "host"

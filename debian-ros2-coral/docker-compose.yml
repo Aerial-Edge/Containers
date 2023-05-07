@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  coral:
+    build: .
+    devices:
+      - "/dev/bus/usb/001/001:/dev/bus/usb/001/001"
+      - "/dev/bus/usb/001/002:/dev/bus/usb/001/002"
+      - "/dev/video0:/dev/video0"
+    network_mode: "host"

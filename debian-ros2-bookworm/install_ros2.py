@@ -74,8 +74,8 @@ def main():
     run_command(["vcs import src < ros2.repos"], shell=True)
 
     # Initializing rosdep
-    run_command(["rosdep init"], shell=True)
-    run_command(["rosdep update"], shell=True)
+    run_command(["rosdep", "init"], shell=True)
+    run_command(["rosdep", "update"], shell=True)
 
     # Installing ROS2 dependencies via rosdep
     run_command(["apt-get", "update"])

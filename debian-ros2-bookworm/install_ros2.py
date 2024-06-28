@@ -45,7 +45,7 @@ def main():
     run_command(["apt", "install", "-y"] + ros2_deps)
 
     # Cleaning up the apt cache
-    run_command(["rm", "-rf", "/var/lib/apt/lists/*"], shell=True)
+    run_command(["rm -rf /var/lib/apt/lists/*"], shell=True)
 
     # Installing Python packages
     python_packages = [
@@ -78,7 +78,7 @@ def main():
     # Installing ROS2 dependencies via rosdep
     run_command(["apt-get", "update"])
     run_command(["apt-get", "-y", "upgrade"])
-    run_command(["rosdep install --from-paths src --ignore-src --rosdistro humble --os=debian:bullseye -y --skip-keys console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers ignition-math6 ignition-cmake2 rti-connext-dds-6.0.1"])
+    run_command(["rosdep install --from-paths src --ignore-src --rosdistro humble --os=debian:bullseye -y --skip-keys console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers ignition-math6 ignition-cmake2 rti-connext-dds-6.0.1"], shell=True)
 
     # Building ROS2
     run_command(["colcon", "build", "--symlink-install"], shell=True)

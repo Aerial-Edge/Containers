@@ -96,7 +96,7 @@ def main():
                    "rti-connext-dds-6.0.1"
                    ]
 
-    run_command(["rosdep install"], + rosdep_list, shell=True)
+    run_command(["rosdep install"] + rosdep_list, shell=True)
 
     # Building ROS2
     run_command(["colcon", "build", "--symlink-install"], shell=True)

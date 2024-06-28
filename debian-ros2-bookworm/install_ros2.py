@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 import subprocess
 
 def run_command(command, shell=False):

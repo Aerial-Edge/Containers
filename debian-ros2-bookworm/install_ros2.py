@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import subprocess
+import os
 
 def run_command(command, shell=False):
     result = subprocess.run(command, shell=shell, text=True, capture_output=True)
@@ -67,7 +68,8 @@ def main():
 
     # Setting up ROS2 workspace
     run_command(["mkdir -p /opt/ros2/src"], shell=True)
-    run_command(["cd /opt/ros2/"], shell=True)
+    #run_command(["cd /opt/ros2/"], shell=True)
+    os.chdir("/opt/ros2")
     run_command(["wget https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos"], shell=True)
     run_command(["vcs import src < ros2.repos"], shell=True)
 

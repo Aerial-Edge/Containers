@@ -12,7 +12,7 @@ def main():
     run_command(["apt-get", "update"])
     run_command(["apt-get", "-y", "upgrade"])
 
-    # Installing necessary packages
+    # Installing system packages
     packages = [
         "curl",
         "gnupg2",
@@ -20,13 +20,6 @@ def main():
         "build-essential",
         "cmake",
         "git",
-        "python3-colcon-common-extensions",
-        "python3-flake8",
-        "python3-pip",
-        "python3-pytest-cov",
-        "python3-rosdep",
-        "python3-setuptools",
-        "python3-vcstool",
         "wget"
     ]
     run_command(["apt-get", "install", "-y"] + packages)
@@ -38,7 +31,17 @@ def main():
     run_command(["apt", "update"])
 
     # Installing ROS2 dependencies
-    run_command(["apt", "install", "-y"] + packages)
+    ros2_deps = [
+        "python3-colcon-common-extensions",
+        "python3-flake8",
+        "python3-pip",
+        "python3-pytest-cov",
+        "python3-rosdep",
+        "python3-setuptools",
+        "python3-vcstool",
+
+    ]
+    run_command(["apt", "install", "-y"] + ros2_deps)
 
     # Cleaning up the apt cache
     run_command(["rm", "-rf", "/var/lib/apt/lists/*"], shell=True)
@@ -63,6 +66,7 @@ def main():
 
     # Setting up ROS2 workspace
     run_command(["mkdir", "-p", "/opt/ros2/src"], shell=True)
+    run_command(["cd", "/opt/ros2/"], shell=True)
     run_command(["wget", "https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos"], shell=True)
     run_command(["vcs", "import", "src", "<", "ros2.repos"], shell=True)
 

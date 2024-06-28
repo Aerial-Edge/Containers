@@ -84,8 +84,8 @@ def main():
     run_command(["colcon", "build", "--symlink-install"], shell=True)
 
     # Adding setup.bash to bashrc
-    with open("/home/ros/.bashrc", "a") as bashrc:
-        bashrc.write("source /opt/ros2/install/setup.bash\n")
+    #with open("/home/ros/.bashrc", "a") as bashrc:
+    #    bashrc.write("source /opt/ros2/install/setup.bash\n")
 
     print("ROS2 installation and setup is complete.")
 

@@ -80,7 +80,23 @@ def main():
     # Installing ROS2 dependencies via rosdep
     run_command(["apt-get", "update"])
     run_command(["apt-get", "-y", "upgrade"])
-    run_command(["rosdep install --from-paths src --ignore-src --rosdistro humble --os=debian:bullseye -y --skip-keys console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers ignition-math6 ignition-cmake2 rti-connext-dds-6.0.1"], shell=True)
+    rosdep_list = ["--from-paths",
+                   "src --ignore-src --rosdistro humble",
+                   "--os=debian:bullseye",
+                   "-y",
+                   "--skip-keys",
+                   "console_bridge",
+                   "fastcdr",
+                   "fastrtps",
+                   "libopensplice67",
+                   "rti-connext-dds-5.3.1",
+                   "urdfdom_headers",
+                   "ignition-math6",
+                   "ignition-cmake2",
+                   "rti-connext-dds-6.0.1"
+                   ]
+
+    run_command(["rosdep install"], + rosdep_list, shell=True)
 
     # Building ROS2
     run_command(["colcon", "build", "--symlink-install"], shell=True)

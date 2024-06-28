@@ -68,18 +68,22 @@ def main():
     # Setting up ROS2 workspace
     run_command(["mkdir", "-p", "/opt/ros2/src"], shell=True)
     run_command(["cd", "/opt/ros2/"], shell=True)
-    run_command(["wget", "https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos"], shell=True)
-    run_command(["vcs", "import", "src", "<", "ros2.repos"], shell=True)
+    run_command(["wget https://raw.githubusercontent.com/ros2/ros2/humble/ros2.repos"], shell=True)
+    run_command(["vcs import src < ros2.repos"], shell=True)
 
     # Initializing rosdep
-    run_command(["rosdep", "init"], shell=True)
-    run_command(["rosdep", "update"], shell=True)
+    run_command(["rosdep init"], shell=True)
+    run_command(["rosdep update"], shell=True)
 
     # Installing ROS2 dependencies via rosdep
     run_command(["apt-get", "update"])
     run_command(["apt-get", "-y", "upgrade"])
-    run_command(["rosdep", "install", "--from-paths", "src", "--ignore-src", "--rosdistro", "humble", "--os=debian:bullseye", "-y", "--skip-keys",
-                 "console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers ignition-math6 ignition-cmake2 rti-connext-dds-6.0.1"])
+    run_command(["rosdep install \
+                --from-paths src \
+                --ignore-src \
+                --rosdistro humble \
+                --os=debian:bullseye -y \
+                --skip-keys console_bridge fastcdr fastrtps libopensplice67 rti-connext-dds-5.3.1 urdfdom_headers ignition-math6 ignition-cmake2 rti-connext-dds-6.0.1"])
 
     # Building ROS2
     run_command(["colcon", "build", "--symlink-install"], shell=True)
